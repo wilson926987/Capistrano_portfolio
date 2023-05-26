@@ -1,0 +1,40 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+*{
+    font-family: 'Comic Neue', cursive !important;
+
+} */
+
+
+.samplebox{
+    height: 200px;
+    width: 70%;
+    background-color: black;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    transition: .4s;
+}
+
+
+
+body{
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.padding8{
+    padding: 8px;
+}
+
+ul{
+    list-style-type: circle;
+    padding: 4px;
+    margin-left: 12px;
+
+}
+
+
