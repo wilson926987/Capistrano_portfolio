@@ -1,21 +1,26 @@
 import React from 'react'
 import { Grid  ,Stack , Box , Typography , Button , TextField , 
-  InputAdornment , ButtonGroup , ToggleButtonGroup, ToggleButton , MenuItem} from '@mui/material'
+  InputAdornment , ButtonGroup , ToggleButtonGroup, ToggleButton , MenuItem ,
+  FormControl, FormControlLabel, RadioGroup, Radio , FormLabel , Checkbox , Switch , Rating, Autocomplete
+
+} from '@mui/material'
 import {AiFillPlusCircle} from 'react-icons/ai'
 import { useState } from 'react'
+import {ImUnlocked , ImLock} from 'react-icons/im'
+import {FaPizzaSlice} from 'react-icons/fa'
 
 
 function SampleComponents() {
   const [togglevalue, setTogglevalue] = useState('primary')
-
-
- 
   const [fruit, setFruit] = useState()
+  const fruitarray = [ "Apple" , "Banana" , "Caimito" ,"Dalandan"]
   const [fruitlist, setFruitlist] = useState([])
   const handlefruitlist = (e)=>{
-      setFruitlist(typeof e === 'string' ? e.spllit(','): e)
+      setFruitlist(typeof e === 'string' ? e.split(','): e)
       console.log(fruitlist)
   }
+  const [gender, setGender] = useState('Female')
+  const [lock, setLock] = useState(false)
 
  
 
@@ -131,7 +136,7 @@ function SampleComponents() {
             </TextField>
           </Box>
           <Box width={'240px'}  >
-            <TextField fullWidth   variant='outlined' value={fruitlist} onChange={e=>{handlefruitlist(e.target.value)}} label="Select Fruit" select SelectProps={{multiple : true}} >
+            <TextField fullWidth   variant='outlined' value={fruitlist} onChange={e=>{handlefruitlist(e.target.value)}} label="Select Multiple Fruits" select SelectProps={{multiple : true}} >
                 <MenuItem value="Apple">Apple</MenuItem>
                 <MenuItem value="Banana">Banana</MenuItem>
                 <MenuItem value="Caimito">Caimito</MenuItem>
@@ -141,8 +146,87 @@ function SampleComponents() {
 
           </Box>
 
-       
+
+          <Box width={'260px'} >   
+            <Autocomplete className='notransition' options={fruitarray} 
+     
+              renderInput={params=> <TextField {...params}  label ="Autocomplete" fullWidth  className='notransition'/>}
+              />
+          </Box>
+
         </Stack>
+
+        <Box> 
+            <FormControl>
+              <FormLabel id='grouplabel'>
+                Select Gender
+              </FormLabel>
+
+              <Stack direction={'row'} spacing={8}> 
+              <RadioGroup name='mediumradio'>  
+                <FormControlLabel control={<Radio/>} label='Male' value={'Male'}></FormControlLabel>
+                <FormControlLabel control={<Radio/>} label='Female' value={'Female'}></FormControlLabel>
+                <FormControlLabel control={<Radio/>} label='Other' value={'Other'}></FormControlLabel>
+
+                
+              </RadioGroup>
+
+              <RadioGroup name='smallradio' value={gender} onChange={e=>setGender(e.target.value)}>  
+                <FormControlLabel control={<Radio size='small' color='success'/>} label='Male' value={'Male'}></FormControlLabel>
+                <FormControlLabel control={<Radio size='small' color='success'/>} label='Female' value={'Female'}></FormControlLabel>
+                <FormControlLabel control={<Radio size='small' color='success'/>} label='Other' value={'Other'}></FormControlLabel>
+               
+              </RadioGroup>
+
+              <Stack >
+              <FormControlLabel  label='I accept terms and conditions' value={'primary'} control={<Checkbox color='primary' checked />}></FormControlLabel>
+              <FormControlLabel  label='I accept terms and conditions' value={'secondary'} control={<Checkbox color='secondary' checked />}></FormControlLabel>
+              <FormControlLabel  label='I accept terms and conditions' value={'success'} control={<Checkbox color='success'checked /> }></FormControlLabel>
+               
+              </Stack>
+
+              <Stack  direction={'row'}>
+              <FormControlLabel  label='I accept terms and conditions' value={'primary'} control={<Checkbox color='primary' checked />}></FormControlLabel>
+              <FormControlLabel  label='I accept terms and conditions' value={'secondary'} control={<Checkbox color='secondary' checked />}></FormControlLabel>
+              <FormControlLabel  label='I accept terms and conditions' value={'success'} control={<Checkbox color='success'checked /> }></FormControlLabel>
+               
+              </Stack>
+              <Box>
+              <Checkbox color='warning' value={lock} onChange={e=>setLock(e.target.value)} icon={<ImLock/>} checkedIcon={<ImUnlocked/>}></Checkbox>
+              <FormControlLabel label='dark mode' control={<Switch />}></FormControlLabel>
+
+
+              </Box>
+              
+              </Stack>
+            </FormControl>
+          </Box>
+
+          <Stack direction={'row'} spacing={12}>
+
+            <Box>
+                <Typography variant='h6' component={'div'} color={'secondary'}>Star Rating</Typography>
+                <Rating precision={.5}></Rating>
+
+            </Box>
+
+            <Box>
+                <Typography variant='h6' component={'div'} color={'secondary'}>Custom Rating</Typography>
+                <Rating className='notransition' spacing={4}  icon={<FaPizzaSlice/>} emptyIcon={<FaPizzaSlice/>}></Rating>
+
+            </Box>
+
+
+
+
+
+          </Stack>
+
+         
+
+
+     
+        
 
 
 

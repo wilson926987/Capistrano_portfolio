@@ -5,17 +5,10 @@
 } */
 
 
-.samplebox{
-    height: 200px;
-    width: 70%;
-    background-color: black;
-}
-
-
 *{
     margin: 0;
     padding: 0;
-    transition: .4s;
+    
 }
 
 
@@ -24,6 +17,10 @@ body{
 
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+body::-webkit-scrollbar{
+    display: none;
 }
 
 .padding8{
@@ -39,5 +36,11 @@ ul{
  .toggleButtonGroup button{
     border: none !important;
   }
+
+
+.blacken{
+    background-color: black;
+}
+
 
 
