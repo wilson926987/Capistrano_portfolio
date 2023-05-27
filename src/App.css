@@ -36,5 +36,8 @@ ul{
     margin-left: 12px;
 
 }
+ .toggleButtonGroup button{
+    border: none !important;
+  }
 
 

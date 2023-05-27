@@ -45,7 +45,8 @@ function App() {
        <AppBar position='static' >
 
 <Toolbar>
-  <Typography component='div' variant='h6' sx={{flexGrow :1}} >Wilson</Typography>
+  <Typography component='div' variant='h6' sx={{flexGrow :1}} onClick={()=>{navigate('/')}}>Wilson</Typography>
+
     <Button onClick={()=>navigate('components')}  color='inherit'> Components</Button>
     <Button color='inherit' 
         id='homepages' 
