@@ -17,11 +17,9 @@ body{
 
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: rgb(238, 238, 238);
 }
 
-body::-webkit-scrollbar{
-    display: none;
-}
 
 .padding8{
     padding: 8px;
@@ -33,9 +31,10 @@ ul{
     margin-left: 12px;
 
 }
- .toggleButtonGroup button{
+.toggleButtonGroup button{
     border: none !important;
-  }
+}
+
 
 
 .blacken{

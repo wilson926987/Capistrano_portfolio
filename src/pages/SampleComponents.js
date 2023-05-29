@@ -1,7 +1,8 @@
 import React from 'react'
 import { Grid  ,Stack , Box , Typography , Button , TextField , 
   InputAdornment , ButtonGroup , ToggleButtonGroup, ToggleButton , MenuItem ,
-  FormControl, FormControlLabel, RadioGroup, Radio , FormLabel , Checkbox , Switch , Rating, Autocomplete
+  FormControl, FormControlLabel, RadioGroup, Radio , FormLabel , Checkbox , Switch , Rating, Autocomplete,
+  Paper, Card, CardActions , CardContent , CardMedia
 
 } from '@mui/material'
 import {AiFillPlusCircle} from 'react-icons/ai'
@@ -216,11 +217,39 @@ function SampleComponents() {
 
             </Box>
 
+          </Stack>
 
+          <Stack direction={'row'} spacing={6}>
+              <Paper sx={{padding :'32px' }} > 
 
+                  <Typography variant='h1' component={'div'}>typography h1</Typography>
+                  <Typography variant='h2' component={'div'}>typography h2</Typography>
+                  <Typography variant='h3' component={'div'}>typography h3</Typography>
+                  <Typography variant='h4' component={'div'}>typography h4</Typography>
+                  <Typography variant='h5' component={'div'}>typography h5</Typography>
+                  <Typography variant='h6' component={'div'}>typography h6</Typography>
+                  <Typography variant='body1' component={'div'}>typography body1</Typography>
+                  <Typography variant='body2' component={'div'}>typography body2</Typography>
+
+              </Paper>
 
 
           </Stack>
+
+
+          <Stack>
+              <Box width='300px'>
+                <Card>
+                  <CardContent>
+                    <Typography variant='body1' component={'div'}>This is a  card</Typography>
+                    
+                  </CardContent>
+                </Card>
+              </Box>
+
+          </Stack>
+
+        
 
          
 

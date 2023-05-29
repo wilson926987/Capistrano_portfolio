@@ -96,7 +96,8 @@ function App() {
       anchorEl={document.getElementById('dashboard')} 
       onClose={()=>setDashboard(false)}
       open={dashboard}
-    
+   
+     
       >
       <MenuItem onClick={()=>{navigate('dashboard/dashboard1') ; setDashboard(false)}}>Dashboard 1</MenuItem>
       <MenuItem onClick={()=>{navigate('dashboard/dashboard2') ; setDashboard(false)}}>Dashboard 2</MenuItem>
