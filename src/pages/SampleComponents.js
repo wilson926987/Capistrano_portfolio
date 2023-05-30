@@ -3,15 +3,18 @@ import { Grid  ,Stack , Box , Typography , Button , TextField ,
   InputAdornment , ButtonGroup , ToggleButtonGroup, ToggleButton , MenuItem ,
   FormControl, FormControlLabel, RadioGroup, Radio , FormLabel , Checkbox , Switch , Rating, Autocomplete,
   Paper, Card, CardActions , CardContent , CardMedia, Accordion, AccordionDetails, AccordionSummary, ImageList , ImageListItem , ImageListItemBar, 
-  Breadcrumbs, Link, Drawer, IconButton, SpeedDial, SpeedDialAction, SpeedDialIcon, BottomNavigation, BottomNavigationAction, Avatar, AvatarGroup, Badge
+  Breadcrumbs, Link, Drawer, IconButton, SpeedDial, SpeedDialAction, SpeedDialIcon, BottomNavigation, BottomNavigationAction, Avatar, AvatarGroup, Badge,
+  List, ListItem, ListItemText, ListItemIcon, ListItemButton, Divider, Chip , Tooltip, Alert, Snackbar, AlertTitle, SnackbarContent ,
+  Dialog, DialogTitle , DialogContent, DialogActions, CircularProgress,LinearProgress, Skeleton
 
 } from '@mui/material'
 
 import { AiFillMail, AiFillPlusCircle ,AiOutlineCaretRight ,AiFillPrinter ,AiFillCopy, AiFillDelete ,AiFillHome ,AiFillSetting,} from 'react-icons/ai'
 import { useState } from 'react'
-import {ImUnlocked , ImLock ,ImMenu} from 'react-icons/im'
+import {ImUnlocked , ImLock ,ImMenu, ImMail} from 'react-icons/im'
 import {FaPizzaSlice ,FaUserCircle} from 'react-icons/fa'
 import {IoIosArrowDropdownCircle} from 'react-icons/io'
+import {BsFillQuestionCircleFill} from "react-icons/bs"
 
 
 
@@ -21,6 +24,10 @@ function SampleComponents() {
   const [fruit, setFruit] = useState()
   const fruitarray = [ "Apple" , "Banana" , "Caimito" ,"Dalandan"]
   const [fruitlist, setFruitlist] = useState([])
+  const [snackbar, setSnackbar] = useState(false)
+  const [snackbar2, setSnackbar2] = useState(false)
+  const [snackbaralert, setSnackbaralert] = useState(false)
+  const [dialog1, setDialog1] = useState(false)
   const handlefruitlist = (e)=>{
       setFruitlist(typeof e === 'string' ? e.split(','): e)
       console.log(fruitlist)
@@ -31,6 +38,13 @@ function SampleComponents() {
   const [sidebar, setSidebar] = useState(false)
   const [bottomnav, setBottomnav] = useState(false)
   const [bottomnavValue, setBottomnavValue] = useState(0)
+  const [chiplist , setchiplist] = useState([
+    { name: "chip1" , id: 1},
+    { name: "chip2" , id: 2},
+    { name: "chip3" , id: 3},
+    { name: "chip4" , id: 4}
+
+  ]) 
 
   const imagelist = [
     {
@@ -544,20 +558,277 @@ function SampleComponents() {
             <AiFillMail className='svg-large' color='primary'/>         
         </Badge>
 
-
-
       </Stack>
 
+        <Stack  direction={'row'} spacing={4}>
+          <Box width={'20%'} sx={{bgcolor:'white' ,borderRadius:'12px'}}>
+              <List>
+                <ListItem>  
+                  <ListItemText primary="List item 1"/>
+                </ListItem>
+                <ListItem>  
+                  <ListItemText primary="List item 2"/>
+                </ListItem>
+                <ListItem>  
+                  <ListItemText primary="List item 3"/>
+                </ListItem>
+                <ListItem>  
+                  <ListItemText primary="List item 4"/>
+                </ListItem>
       
+              </List>
+          </Box>   
+
+
+          <Box width={'20%'} sx={{bgcolor:'white' ,borderRadius:'12px'}}>
+              <List>
+                <ListItem>  
+                  <ListItemIcon>
+                    <ImMail/>
+                  </ListItemIcon>
+                  <ListItemText primary="List item 1"/>
+                </ListItem>
+                <ListItem>  
+                <ListItemIcon>
+                    <ImMail/>
+                  </ListItemIcon>
+                  <ListItemText primary="List item 2"/>
+                </ListItem>
+                <ListItem>  
+                <ListItemIcon>
+                    <ImMail/>
+                  </ListItemIcon>
+                  <ListItemText primary="List item 3"/>
+                </ListItem>
+                <ListItem>  
+                    <ListItemIcon>
+                    <ImMail/>
+                  </ListItemIcon>
+                  <ListItemText primary="List item 4"/>
+                </ListItem>
+      
+              </List>
+          </Box>
+          
+          
+          <Box width={'20%'} sx={{bgcolor:'white' ,borderRadius:'12px'}}>
+              <List>
+                <ListItem>  
+                  <ListItemIcon>
+                    <Avatar></Avatar>       
+                  </ListItemIcon>
+                  <ListItemText primary="List item 1" secondary="subtext"/>
+                </ListItem>
+                <ListItem>  
+                <ListItemIcon>
+                      <Avatar></Avatar>    
+                  </ListItemIcon>
+                  <ListItemText primary="List item 2" secondary="subtext"/>
+                </ListItem>
+                <ListItem>  
+                <ListItemIcon>
+                <Avatar></Avatar>    
+                  </ListItemIcon>
+                  <ListItemText primary="List item 3" secondary="subtext"/>
+                </ListItem>
+                <ListItem>  
+                    <ListItemIcon>
+                    <Avatar></Avatar>    
+                  </ListItemIcon>
+                  <ListItemText primary="List item 4" secondary="subtext"/>
+                </ListItem>
+      
+              </List>
+          </Box>  
+
+             
+          <Box width={'20%'} sx={{bgcolor:'white' ,borderRadius:'12px'}}>
+              <List disablePadding>
+                <ListItem>  
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <Avatar></Avatar>       
+                    </ListItemIcon>
+                    <ListItemText primary="List button 1" secondary="subtext"/>
+                  </ListItemButton>
+                </ListItem>
+                <ListItem>  
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <Avatar></Avatar>       
+                    </ListItemIcon>
+                    <ListItemText primary="List button 1" secondary="subtext"/>
+                  </ListItemButton>
+                </ListItem>
+          
+              </List>
+          </Box>  
+
+          <Box width={'20%'} sx={{bgcolor:'white' ,borderRadius:'12px'}}>
+              <List disablePadding>
+                <ListItem>  
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <Avatar></Avatar>       
+                    </ListItemIcon>
+                    <ListItemText primary="List button 1" secondary="subtext"/>
+                  </ListItemButton>
+                </ListItem>
+                <Divider/>
+                <ListItem>  
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <Avatar></Avatar>       
+                    </ListItemIcon>
+                    <ListItemText primary="List button 1" secondary="subtext"/>
+                  </ListItemButton>
+                </ListItem>
+          
+              </List>
+          </Box> 
+        </Stack>
+
+        <Stack direction ={'row'} spacing={1}>
+          <Chip label="Chip" color ="primary" size='small'></Chip>
+          <Chip label="Chip" color ="primary" ></Chip>
+          <Chip label="Chip outlined" variant='outlined' color ="primary" ></Chip>
+          <Chip label="Chip click" color ="success" onClick={()=>{alert("Success")}}  ></Chip>
+          <Chip label="Avatar" color ="primary" avatar={<Avatar></Avatar>} ></Chip>
+          <Chip label="Chip" color ="warning" onDelete={()=>{alert("deleted")}} ></Chip>
+
+          {chiplist.map(item=>(
+            <Chip key={item.id} avatar={<Avatar></Avatar>} label={item.name} onDelete={()=>{setchiplist(chiplist.filter(temp=>item.id !== temp.id))}}></Chip>
+          ))}
+        </Stack>
+
+        <Stack direction={'row'} spacing={4} alignItems={'center'}>
+
+          <Box>
+          <Tooltip title='information' >
+            <IconButton color='primary'>
+             <BsFillQuestionCircleFill/>
+            </IconButton>
+          </Tooltip>
+          </Box>
+          <Box>
+          <Tooltip title='information' placement='right'>
+            <IconButton color='primary'>
+             <BsFillQuestionCircleFill/>
+            </IconButton>
+          </Tooltip>
+          </Box>
+          <Box>
+          <Tooltip title='with arrow' placement='right' arrow>
+            
+            <IconButton color='primary'>
+             <BsFillQuestionCircleFill/>
+            </IconButton>
+          </Tooltip>
+          </Box>
+
+          <Box>
+          <Tooltip title='using chip' placement='right' arrow>        
+                <Chip label="Chip" color ="primary" size='small'></Chip>   
+          </Tooltip>
+          </Box>
+          <Box>
+          <Tooltip title='with delay' placement='right' enterDelay={600} leaveDelay={200}>        
+              <Avatar src='https://randomuser.me/api/portraits/women/69.jpg'>Wilson</Avatar>
+          </Tooltip>
+          </Box>
+
+          <Box>
+          <Tooltip title='with badges' placement='right'>        
+          <Badge badgeContent={67} color='warning'>
+            <IconButton color='secondary'> <AiFillMail className='svg-large' color='primary'/>  </IconButton>
+              
+        </Badge>
+          </Tooltip>
+          </Box>
+
+
+        </Stack>
+
+
+        <Stack spacing={3}>
+          <Alert severity='error'>This is a sample Alert error</Alert>
+          <Alert severity='warning'>This is a sample Alert warning</Alert>
+          <Alert severity='info'>This is a sample Alert info</Alert>
+          <Alert severity='success'>This is a sample Alert success</Alert>
+          <Alert severity='success' variant='outlined'>This is a sample Alert outlined</Alert>
+          <Alert severity='success' variant='filled'>This is a sample Alert filled</Alert>
+          <Alert severity='success' variant='outlined'>
+            <AlertTitle>Alert Title</AlertTitle>
+            This is a sample Alert with title</Alert>
+          <Alert severity='success' variant='outlined' icon={<ImMail/>}>
+            <AlertTitle>Alert Title and Custom Icon</AlertTitle>
+            This is a sample Alert with title</Alert>
+          <Alert severity='success' variant='outlined' icon={<ImMail/>} onClose={()=>{alert("alert Closed")}}>
+            <AlertTitle>Delete Alert</AlertTitle>
+            This is a sample Alert with title</Alert>
+
+            <Alert severity='success' variant='outlined' icon={<ImMail/>} action={<><Button color='inherit' size='small'>Action 1</Button><Button color='inherit' size='small'>Action 2</Button></>}>
+            <AlertTitle>With Actions</AlertTitle>
+            This is a sample Alert with title</Alert>
+       
+       
+       
+        </Stack>
 
         
 
-         
+        <Stack direction={'row'} spacing={3}>
+
+          <Button variant='contained' onClick={()=>{setSnackbar(true)}}>Default Snackbar</Button>
+          <Button variant='contained' onClick={()=>{setSnackbar2(true)}}>Custom position</Button>  
+          <Button variant='contained' onClick={()=>{setSnackbaralert(true)}}>Snack Bar Alert</Button>  
+        </Stack>
+        <Stack direction={'row'} spacing={3}> 
+            <Button variant='contained' color='warning' onClick={()=>{setDialog1(true)}}>Default Dialogbar</Button>
+        </Stack>
+
+        <Snackbar message="Default snackbar" color='secondary' autoHideDuration={3000} open={snackbar} onClose={()=>{setSnackbar(false)}}></Snackbar>
+        <Snackbar message="Default snackbar" autoHideDuration={3000} open={snackbar2} onClose={()=>{setSnackbar2(false)}} anchorOrigin={{vertical:'top' , horizontal:'center'}}></Snackbar>
+        <Snackbar  autoHideDuration={2000} open={snackbaralert} onClose={()=>{setSnackbaralert(false)}}>
+          <SnackbarContent
+           message='Snackbar content'
+            sx={{backgroundColor: 'whitesmoke' , color:'black'}}
+           ></SnackbarContent>
+        </Snackbar>
 
 
-     
-        
+        <Dialog open={dialog1} onClose={()=>setDialog1(false)}>
+          <DialogTitle>Sample Dialog Prompt</DialogTitle>
+          <DialogContent>
+            <Typography variant='body1' component={'div'}>Some confirmation message here Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, facilis eius? Sapiente quisquam, soluta ex architecto ducimus sed minima perspiciatis provident facere pariatur id accusantium debitis illum explicabo dolores amet?</Typography>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={()=>setDialog1(false)}>Confirm</Button>
+            <Button onClick={()=>setDialog1(false)}>Cancel</Button>
+          </DialogActions>
+        </Dialog>
 
+
+        <Stack direction={'row'} spacing={12}> 
+          <CircularProgress />
+          <CircularProgress  color='success'/>
+          <CircularProgress variant='determinate' value={60}/>
+         <CircularProgress thickness={12}/>       
+        </Stack>
+        <Stack spacing={8}>
+          <LinearProgress  color='success' />
+          <LinearProgress variant='determinate' value={60}/>
+       
+        </Stack>
+
+
+        <Stack width={"250px"} spacing ={4}>
+            <Skeleton variant='text' animation={false}/>
+            <Skeleton variant='text' animation={'wave'}/>
+            <Skeleton variant='text' />
+            <Skeleton variant='circular' width={40} height={40} />
+            <Skeleton  variant='rectangular' width={'200px'} height={'60px'} animation='wave'/>
+        </Stack>
 
 
       </Stack>
