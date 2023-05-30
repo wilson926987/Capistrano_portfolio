@@ -2,13 +2,14 @@ import React from 'react'
 import { Grid  ,Stack , Box , Typography , Button , TextField , 
   InputAdornment , ButtonGroup , ToggleButtonGroup, ToggleButton , MenuItem ,
   FormControl, FormControlLabel, RadioGroup, Radio , FormLabel , Checkbox , Switch , Rating, Autocomplete,
-  Paper, Card, CardActions , CardContent , CardMedia
+  Paper, Card, CardActions , CardContent , CardMedia, Accordion, AccordionDetails, AccordionSummary, ImageList , ImageListItem , ImageListItemBar, Breadcrumbs, Link
 
 } from '@mui/material'
-import {AiFillPlusCircle} from 'react-icons/ai'
+import {AiFillPlusCircle ,AiOutlineCaretRight} from 'react-icons/ai'
 import { useState } from 'react'
 import {ImUnlocked , ImLock} from 'react-icons/im'
 import {FaPizzaSlice} from 'react-icons/fa'
+import {IoIosArrowDropdownCircle} from 'react-icons/io'
 
 
 function SampleComponents() {
@@ -22,6 +23,45 @@ function SampleComponents() {
   }
   const [gender, setGender] = useState('Female')
   const [lock, setLock] = useState(false)
+  const [accordion, setAccordion] = useState()
+
+  const imagelist = [
+    {
+        src : "https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+        ,title: 'photo1'
+    },
+    {
+      src: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+      , title: 'photo2'
+    },
+    {
+        src: "https://plus.unsplash.com/premium_photo-1663040669845-e4ff569ee5f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
+        ,title: 'photo3'
+    },
+    {
+        src: "https://images.unsplash.com/photo-1550686041-366ad85a1355?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"  
+        ,title: 'photo4'
+    },
+    {
+        src: "https://images.unsplash.com/photo-1613336026275-d6d473084e85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+        ,title: 'photo5'
+    },
+    {
+        src: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+        ,title: 'photo6'
+    },
+    {
+        src :"https://images.unsplash.com/photo-1504470695779-75300268aa0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+        ,title: "photo7"
+    },
+    {
+        src: "https://images.unsplash.com/photo-1521133573892-e44906baee46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+        , title: 'photo8'
+    },{
+      src: 'https://images.unsplash.com/photo-1521178010706-baefe2334211?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80'
+      ,title: 'photo9'
+    }
+  ]
 
  
 
@@ -237,17 +277,205 @@ function SampleComponents() {
           </Stack>
 
 
-          <Stack>
-              <Box width='300px'>
+          <Stack direction={'row' } spacing={5}>
+              <Box width='30%'>
                 <Card>
                   <CardContent>
+                    <Typography variant ='h5' component={'div'} gutterBottom>Sample Card</Typography>
                     <Typography variant='body1' component={'div'}>This is a  card</Typography>
                     
                   </CardContent>
+                  <CardActions>
+
+                    <Stack direction={'row'} justifyContent={'flex-end'} width={'100%'} spacing={1}>
+                      <Box> 
+                        <Button size='small'  onClick={()=>alert('click me')}>  
+                            Click me
+                        </Button>   
+                      </Box>
+                      <Box> 
+                        <Button size='small' onClick={()=>alert('click me')}>  
+                            Click me
+                        </Button>   
+                      </Box>
+                       
+                    </Stack>
+                               
+                  </CardActions>
+
                 </Card>
               </Box>
 
+
+              <Box width={'30%'}>
+                <Card>
+
+                <CardContent>
+                    <Typography variant ='h5' component={'div'} gutterBottom>Sample Card</Typography>
+                    <Typography variant='body1' component={'div'}>This is a  card</Typography>
+                    
+                  </CardContent>
+
+
+                  <CardMedia component ='img' height={'140'} image='https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='unsplash image'/>
+
+                  
+                </Card>
+
+
+              </Box>
+              <Box width={'20%'} minWidth={300}>
+                <Card>
+                <CardMedia  component ='img' height={'140'} image='https://images.pexels.com/photos/1029604/pexels-photo-1029604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='unsplash image'/>
+
+
+                <CardContent>
+                    <Typography variant ='h5' component={'div'} gutterBottom>Sample Card</Typography>
+                    <Typography variant='body1' component={'div'}>This is a  card</Typography>
+                    
+                  </CardContent>
+                  <CardActions>
+
+                    <Stack direction={'row'} justifyContent={'flex-end'} width={'100%'} spacing={1}>
+                      <Box> 
+                        <Button size='small'  onClick={()=>alert('click me')}>  
+                            Click me
+                        </Button>   
+                      </Box>
+                      <Box> 
+                        <Button size='small' onClick={()=>alert('click me')}>  
+                            Click me
+                        </Button>   
+                      </Box>
+                       
+                    </Stack>
+                               
+                  </CardActions>
+
+
+                 
+                  
+                </Card>
+
+
+              </Box>
+
           </Stack>
+
+
+          <Stack>
+              <Box>
+                <Accordion expanded={accordion ==="acc1"} onChange={()=>{setAccordion( accordion=== undefined ? "acc1" : accordion !== 'acc1' ? 'acc1': undefined )}}>
+                  <AccordionSummary expandIcon={<IoIosArrowDropdownCircle/>}>
+                    <Typography variant='h6' component={'div'}>This is an Accordion {accordion}</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography variant='body1' component={'div'}>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt rerum asperiores libero veniam nihil, voluptates placeat soluta necessitatibus ex architecto! Ducimus ea dolor fuga minus deleniti nesciunt soluta provident nihil.
+                    </Typography>
+                    
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion   expanded={accordion ==="acc2"} onChange={(e)=>{setAccordion(accordion=== undefined ? "acc2" : accordion !== 'acc2' ? 'acc2': undefined ) ; console.log(e)}}>
+                  <AccordionSummary expandIcon={<IoIosArrowDropdownCircle/>}>
+                    <Typography variant='h6' component={'div'}>This is an Accordion 2 {accordion}</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography variant='body1' component={'div'}>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt rerum asperiores libero veniam nihil, voluptates placeat soluta necessitatibus ex architecto! Ducimus ea dolor fuga minus deleniti nesciunt soluta provident nihil.
+                    </Typography>
+                    
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion  expanded={accordion ==="acc3"} onChange={()=>{setAccordion( accordion=== undefined ? "acc3" : accordion !== 'acc3' ? 'acc3': undefined )}}>
+                  <AccordionSummary expandIcon={<IoIosArrowDropdownCircle/>}>
+                    <Typography variant='h6' component={'div'}>This is an Accordion 3 {accordion}</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography variant='body1' component={'div'}>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt rerum asperiores libero veniam nihil, voluptates placeat soluta necessitatibus ex architecto! Ducimus ea dolor fuga minus deleniti nesciunt soluta provident nihil.
+                    </Typography>
+                    
+                  </AccordionDetails>
+                </Accordion>
+              </Box>
+
+          </Stack>
+
+
+          <Stack direction={'row'} >
+     
+         <Box width={'30%'}> 
+          <Typography padding={4} variant='h6'>Default</Typography>
+         <ImageList cols={2} sx={{height:'400px' }} rowHeight={'400px'}>  
+                {imagelist.map(item=>(
+                  <ImageListItem key={item.src} >
+                    <img src={item.src} alt="" loading='lazy'/>
+                    <ImageListItemBar title={item.title} subtitle={item.title}/>
+                  </ImageListItem>
+                ))}        
+            </ImageList>
+            </Box>
+
+            <Box width={'30%'}> 
+              <Typography padding={4} variant='h6'>masonry</Typography>
+         <ImageList variant='masonry' cols={5} sx={{height:'400px' }} gap={18}>  
+                {imagelist.map(item=>(
+                  <ImageListItem key={item.src} >
+                    <img src={item.src} alt="" loading='lazy'/>
+                  </ImageListItem>
+                ))}        
+            </ImageList>
+            </Box>
+            <Box width={'40%'}> 
+              <Typography padding={4} variant='h6'>Woven</Typography>
+         <ImageList variant='woven' cols={3} sx={{height:'400px'}} gap={6}>  
+                {imagelist.map(item=>(
+                  <ImageListItem key={item.src} >
+                    <img src={item.src} alt="" loading='lazy'/>
+                  </ImageListItem>
+                ))}        
+            </ImageList>
+            </Box>
+
+
+
+     
+
+
+          </Stack>
+
+          <Stack direction={'row'}  spacing={30}  >
+
+         
+              <Breadcrumbs>
+                  <Link>Home</Link>
+                  <Link>Animals</Link>
+                  <Link>Dogs</Link>
+                  <Link>Chiuaua</Link>
+              </Breadcrumbs>       
+              <Breadcrumbs separator={<AiOutlineCaretRight/>} >
+                  <Link>Home</Link>
+                  <Link>Animals</Link>
+                  <Link>Dogs</Link>
+                  <Link>Chiuaua</Link>
+              </Breadcrumbs>
+
+              <Breadcrumbs separator={<AiOutlineCaretRight/>} maxItems={2} >
+                  <Link>Home</Link>
+                  <Link>Animals</Link>
+                  <Link>Dogs</Link>
+                  <Link>Chiuaua</Link>
+              </Breadcrumbs>
+
+       
+           
+
+
+          </Stack>
+
+
+
 
         
 

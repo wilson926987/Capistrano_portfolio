@@ -35,7 +35,9 @@ ul{
     border: none !important;
 }
 
-
+.img200px img, .img200px{
+    width: 200px;
+}
 
 .blacken{
     background-color: black;
