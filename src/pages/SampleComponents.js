@@ -2,14 +2,18 @@ import React from 'react'
 import { Grid  ,Stack , Box , Typography , Button , TextField , 
   InputAdornment , ButtonGroup , ToggleButtonGroup, ToggleButton , MenuItem ,
   FormControl, FormControlLabel, RadioGroup, Radio , FormLabel , Checkbox , Switch , Rating, Autocomplete,
-  Paper, Card, CardActions , CardContent , CardMedia, Accordion, AccordionDetails, AccordionSummary, ImageList , ImageListItem , ImageListItemBar, Breadcrumbs, Link
+  Paper, Card, CardActions , CardContent , CardMedia, Accordion, AccordionDetails, AccordionSummary, ImageList , ImageListItem , ImageListItemBar, 
+  Breadcrumbs, Link, Drawer, IconButton, SpeedDial, SpeedDialAction, SpeedDialIcon, BottomNavigation, BottomNavigationAction, Avatar, AvatarGroup, Badge
 
 } from '@mui/material'
-import {AiFillPlusCircle ,AiOutlineCaretRight} from 'react-icons/ai'
+
+import { AiFillMail, AiFillPlusCircle ,AiOutlineCaretRight ,AiFillPrinter ,AiFillCopy, AiFillDelete ,AiFillHome ,AiFillSetting,} from 'react-icons/ai'
 import { useState } from 'react'
-import {ImUnlocked , ImLock} from 'react-icons/im'
-import {FaPizzaSlice} from 'react-icons/fa'
+import {ImUnlocked , ImLock ,ImMenu} from 'react-icons/im'
+import {FaPizzaSlice ,FaUserCircle} from 'react-icons/fa'
 import {IoIosArrowDropdownCircle} from 'react-icons/io'
+
+
 
 
 function SampleComponents() {
@@ -24,6 +28,9 @@ function SampleComponents() {
   const [gender, setGender] = useState('Female')
   const [lock, setLock] = useState(false)
   const [accordion, setAccordion] = useState()
+  const [sidebar, setSidebar] = useState(false)
+  const [bottomnav, setBottomnav] = useState(false)
+  const [bottomnavValue, setBottomnavValue] = useState(0)
 
   const imagelist = [
     {
@@ -68,8 +75,20 @@ function SampleComponents() {
 
   return (
     <div>
-         <Typography variant='h5' padding={2}  component={'div'} color={'primary'}>Components</Typography>
+
+      <Stack direction={'row'} alignItems={'center'}>
+        <IconButton size ='large' edge='start' color='primary'>
+          <ImMenu onClick={()=>setSidebar(!sidebar)}/>
+        </IconButton>
+        <IconButton size ='large' edge='start' color='primary'>
+          <ImMenu onClick={()=>setBottomnav(!bottomnav)}/>
+        </IconButton>
+       
+        <Typography variant='h5'  component={'div'} color={'primary'}>Components</Typography>
       
+
+      </Stack>
+        
 
       <Stack padding={3} spacing={2}>
 
@@ -234,7 +253,7 @@ function SampleComponents() {
               </Stack>
               <Box>
               <Checkbox color='warning' value={lock} onChange={e=>setLock(e.target.value)} icon={<ImLock/>} checkedIcon={<ImUnlocked/>}></Checkbox>
-              <FormControlLabel label='dark mode' control={<Switch />}></FormControlLabel>
+              <FormControlLabel label='switch' control={<Switch />}></FormControlLabel>
 
 
               </Box>
@@ -467,15 +486,69 @@ function SampleComponents() {
                   <Link>Dogs</Link>
                   <Link>Chiuaua</Link>
               </Breadcrumbs>
-
-       
-           
-
-
           </Stack>
 
 
+      <Drawer anchor='left' open={sidebar} onClose={()=>setSidebar(false)}>
 
+        <Box  padding={2} width={'250px'} role='presentation'>
+          <Typography variant='body1' component={'div'}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam ea tenetur perspiciatis officia doloribus facilis, voluptate dolores, commodi facere alias nesciunt voluptatibus nisi quam voluptas ratione repellendus accusantium atque. Deserunt.</Typography>
+
+        </Box>
+
+      </Drawer>
+
+
+   
+      <SpeedDial icon={<SpeedDialIcon/>}   ariaLabel= 'Navigation speed dial' sx={{position: 'fixed' , bottom: 16 ,right:16}}>
+            <SpeedDialAction icon={<AiFillDelete/>} title='delete'/>
+            <SpeedDialAction icon={<AiFillCopy/>} title='copy'/>
+            <SpeedDialAction icon={<AiFillPrinter/>} title='print' tooltipTitle='Print' tooltipOpen/>
+     
+      </SpeedDial>
+
+      {!bottomnav &&
+        <BottomNavigation sx={{position:"relative" , bottom:0 , width: '100%', left:0 , zIndex: 99}} onChange={(event, e)=>{setBottomnavValue(e)}} value={bottomnavValue}>
+          <BottomNavigationAction label='Home' icon={<AiFillHome/>}/>
+          <BottomNavigationAction label='Profile' icon={<FaUserCircle/>}/>
+          <BottomNavigationAction label="Settings" icon={<AiFillSetting/>}/>
+        </BottomNavigation>
+      }
+
+
+      <Stack direction={'row'} spacing={30}>
+        <AvatarGroup>
+          <Avatar sx={{bgcolor: 'primary.main'}}>TT</Avatar>
+          <Avatar sx={{bgcolor: 'success.light'}}>XX</Avatar>
+          <Avatar sx={{bgcolor: 'lightblue'}}>NN</Avatar>
+          <Avatar src='https://randomuser.me/api/portraits/women/79.jpg'>Wilson</Avatar>
+          <Avatar src='https://randomuser.me/api/portraits/women/69.jpg'>Wilson</Avatar>
+        </AvatarGroup>
+        <AvatarGroup max={3}>
+          <Avatar sx={{bgcolor: 'primary.light'}}>TT</Avatar>
+          <Avatar sx={{bgcolor: 'palegreen'}}>XX</Avatar>
+          <Avatar sx={{bgcolor: 'lightblue'}}>NN</Avatar>
+          <Avatar src='https://randomuser.me/api/portraits/women/79.jpg'>Wilson</Avatar>
+          <Avatar src='https://randomuser.me/api/portraits/women/69.jpg'>Wilson</Avatar>
+        </AvatarGroup>
+          
+
+      </Stack>
+
+      <Stack direction={'row'} spacing={5}>
+        <Badge badgeContent={67} color='warning'>
+            <AiFillMail className='svg-large' color='primary'/>         
+        </Badge>
+
+        <Badge badgeContent={67} color='warning'>
+            <AiFillMail className='svg-large' color='primary'/>         
+        </Badge>
+
+
+
+      </Stack>
+
+      
 
         
 
