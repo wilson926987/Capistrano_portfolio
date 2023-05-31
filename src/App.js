@@ -2,26 +2,24 @@
 import './App.css';
 
 import { BrowserRouter,Routes, Route, useNavigate, Router , Link} from 'react-router-dom';
-import { AppBar, Toolbar, Typography  , Stack , Button , Menu, MenuItem, MenuItemProps} from '@mui/material';
+import { AppBar, Toolbar, Typography  , Stack , Button , Menu, MenuItem, MenuItemProps, Tooltip} from '@mui/material';
 
 
 
 import Home from './pages/Home';
 import DashboardContainer from './pages/Dashboard/DashboardContainer';
-import FormsContainer from './pages/Forms/FormsContainer';
+
 import HomepagesContainer from './pages/Homepages/HomepagesContainer';
 import ProfilepageContainer from './pages/Profilepage/ProfilepageContainer';
 import SampleComponents from './pages/SampleComponents';
 import Dashboard1 from './pages/Dashboard/Dashboard1';
 import Dashboard2 from './pages/Dashboard/Dashboard2';
-import Forms1 from './pages/Forms/Forms1';
-import Forms2 from './pages/Forms/Forms2';
+import Graphs from './pages/Graphs';
 import Homepage1 from './pages/Homepages/Homepage1';
 import Homepage2 from './pages/Homepages/Homepage2';
 import Profilepage2 from './pages/Profilepage/Profilepage2';
 import Profilepage1 from './pages/Profilepage/Profilepage1';
 import { useState } from 'react';
-import {AiOutlineCaretDown , AiOutlineCaretUp} from 'react-icons/ai'
 
 
 
@@ -47,39 +45,37 @@ function App() {
 <Toolbar>
   <Typography component='div' variant='h6' sx={{flexGrow :1}} onClick={()=>{navigate('/')}}>Wilson</Typography>
 
-    <Button onClick={()=>navigate('components')}  color='inherit'> Components</Button>
+    <Tooltip placement='bottom' title="all components">
+        <Button onClick={()=>navigate('components')}  color='inherit'> Components</Button>
+    </Tooltip>
+    <Button onClick={()=>navigate('graphs')}  color='inherit'> Graphs</Button>
+    <Tooltip placement='bottom' title='coming soon'>
     <Button color='inherit' 
         id='homepages' 
         aria-controls={homepage}
         aria-haspopup = 'true'
         aria-expanded={homepage}
         onClick={()=>{sethomepage(!homepage)}}
-       
+        disabled
     > Homepages</Button>
+    </Tooltip>
     <Button color='inherit' 
         id='dashboard' 
         aria-controls={dashboard}
         aria-haspopup = 'true'
         aria-expanded={dashboard}
         onClick={()=>{setDashboard(!dashboard)}}
-    
+        disabled
     > Dashboard</Button>
 
-    <Button color='inherit' 
-        id='forms' 
-        aria-controls={forms}
-        aria-haspopup = 'true'
-        aria-expanded={forms}
-        onClick={()=>{setForms(!forms)}}
-       
-    > Forms</Button>
+  
     <Button color='inherit' 
         id='profilepage' 
         aria-controls={profilepage}
         aria-haspopup = 'true'
         aria-expanded={profilepage}
         onClick={()=>{setProfilepage(!profilepage)}}
-       
+        disabled
     > Profile</Button>
 
     <Menu id='homepagemenu' 
@@ -103,15 +99,7 @@ function App() {
       <MenuItem onClick={()=>{navigate('dashboard/dashboard2') ; setDashboard(false)}}>Dashboard 2</MenuItem>
     </Menu>
 
-    <Menu id='formsmenu' 
-      anchorEl={document.getElementById('forms')} 
-      onClose={()=>setForms(false)}
-      open={forms}
-    
-      >
-      <MenuItem onClick={()=>{navigate('forms/form1') ; setForms(false)}}>Form 1</MenuItem>
-      <MenuItem onClick={()=>{navigate('forms/form2');setForms(false)}}>Form 2</MenuItem>
-    </Menu>
+   
 
     <Menu id='profilemenu' 
       anchorEl={document.getElementById('profilepage')} 
@@ -138,16 +126,13 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='components' element={<SampleComponents/>}></Route>
+          <Route path='graphs' element={<Graphs/>}></Route>
           <Route path='dashboard' element ={<DashboardContainer/>}>
 
             <Route path='dashboard1' element={<Dashboard1/>}></Route>
             <Route path='dashboard2' element={<Dashboard2/>}></Route>
           </Route>
-          <Route path='forms' element={<FormsContainer/>}>
-            <Route path='form1' element={<Forms1/>}></Route>
-            <Route path='form2' element={<Forms2/>}></Route>
-
-          </Route>
+     
           <Route path='profilepage' element= {<ProfilepageContainer/>}>
 
             <Route path='profile1' element={<Profilepage1/>}></Route>

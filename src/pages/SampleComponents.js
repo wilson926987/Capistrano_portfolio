@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Grid  ,Stack , Box , Typography , Button , TextField , 
   InputAdornment , ButtonGroup , ToggleButtonGroup, ToggleButton , MenuItem ,
   FormControl, FormControlLabel, RadioGroup, Radio , FormLabel , Checkbox , Switch , Rating, Autocomplete,
   Paper, Card, CardActions , CardContent , CardMedia, Accordion, AccordionDetails, AccordionSummary, ImageList , ImageListItem , ImageListItemBar, 
   Breadcrumbs, Link, Drawer, IconButton, SpeedDial, SpeedDialAction, SpeedDialIcon, BottomNavigation, BottomNavigationAction, Avatar, AvatarGroup, Badge,
   List, ListItem, ListItemText, ListItemIcon, ListItemButton, Divider, Chip , Tooltip, Alert, Snackbar, AlertTitle, SnackbarContent ,
-  Dialog, DialogTitle , DialogContent, DialogActions, CircularProgress,LinearProgress, Skeleton, Tabs, Tab
+  Dialog, DialogTitle , DialogContent, DialogActions, CircularProgress,LinearProgress, Skeleton, Tabs, Tab,
+  CssBaseline, ThemeProvider, createTheme,
+  
 
 } from '@mui/material'
 
-import { LoadingButton, TabPanel  } from '@mui/lab'
+import { LoadingButton, Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot, TimelineOppositeContent} from '@mui/lab'
 
 
 
@@ -48,6 +50,23 @@ function SampleComponents() {
   const [dialog1, setDialog1] = useState(false)
   const [loadbutton, setLoadbutton] = useState(false)
   const [tab, setTab] = useState(1)
+  const [theme, setTheme] = useState('light')
+  const changeTheme= (e)=>{
+    setTheme(e===true? 'dark' : 'light')
+  }
+
+
+  const lightTheme = createTheme({
+    palette: {
+      mode: 'light',
+    },
+  });
+  
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
 
   const handlefruitlist = (e)=>{
       setFruitlist(typeof e === 'string' ? e.split(','): e)
@@ -105,21 +124,21 @@ function SampleComponents() {
     }
   ]
 
- 
+
+
 
 
   return (
 
-    
-      <div>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+       <CssBaseline />
+         <div>
 
 <Stack direction={'row'} alignItems={'center'}>
   <IconButton size ='large' edge='start' color='primary'>
     <ImMenu onClick={()=>setSidebar(!sidebar)}/>
   </IconButton>
-  <IconButton size ='large' edge='start' color='primary'>
-    <ImMenu onClick={()=>setBottomnav(!bottomnav)}/>
-  </IconButton>
+
  
   <Typography variant='h5'  component={'div'} color={'primary'}>Components</Typography>
 
@@ -290,7 +309,7 @@ function SampleComponents() {
         </Stack>
         <Box>
         <Checkbox color='warning' value={lock} onChange={e=>setLock(e.target.value)} icon={<ImLock/>} checkedIcon={<ImUnlocked/>}></Checkbox>
-        <FormControlLabel label='switch' control={<Switch />}></FormControlLabel>
+        <FormControlLabel label='dark mode' control={<Switch onChange={e=>{changeTheme(e.target.checked)}}/>}></FormControlLabel>
 
 
         </Box>
@@ -584,7 +603,7 @@ function SampleComponents() {
 </Stack>
 
   <Stack  direction={'row'} spacing={4}>
-    <Box width={'20%'} sx={{bgcolor:'white' ,borderRadius:'12px'}}>
+    <Box width={'20%'} sx={{bgcolor:'primary' ,borderRadius:'12px'}}>
         <List>
           <ListItem>  
             <ListItemText primary="List item 1"/>
@@ -603,7 +622,7 @@ function SampleComponents() {
     </Box>   
 
 
-    <Box width={'20%'} sx={{bgcolor:'white' ,borderRadius:'12px'}}>
+    <Box width={'20%'} sx={{bgcolor:'primary' ,borderRadius:'12px'}}>
         <List>
           <ListItem>  
             <ListItemIcon>
@@ -634,7 +653,7 @@ function SampleComponents() {
     </Box>
     
     
-    <Box width={'20%'} sx={{bgcolor:'white' ,borderRadius:'12px'}}>
+    <Box width={'20%'} sx={{bgcolor:'primary' ,borderRadius:'12px'}}>
         <List>
           <ListItem>  
             <ListItemIcon>
@@ -665,7 +684,7 @@ function SampleComponents() {
     </Box>  
 
        
-    <Box width={'20%'} sx={{bgcolor:'white' ,borderRadius:'12px'}}>
+    <Box width={'20%'} sx={{bgcolor:'primary' ,borderRadius:'12px'}}>
         <List disablePadding>
           <ListItem>  
             <ListItemButton>
@@ -687,7 +706,7 @@ function SampleComponents() {
         </List>
     </Box>  
 
-    <Box width={'20%'} sx={{bgcolor:'white' ,borderRadius:'12px'}}>
+    <Box width={'20%'} sx={{bgcolor:'primary' ,borderRadius:'12px'}}>
         <List disablePadding>
           <ListItem>  
             <ListItemButton>
@@ -919,35 +938,129 @@ function SampleComponents() {
 
 </Box>
 
+<Stack direction={'row'} spacing={4}>
+  <Box width={'25%'}>
+    <Timeline >
+      <TimelineItem>
+        <TimelineSeparator>
+          <TimelineDot/>
+          <TimelineConnector/>
+        </TimelineSeparator>
+        <TimelineContent>
+          Manila
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineSeparator>
+          <TimelineDot/>
+          <TimelineConnector/>
+        </TimelineSeparator>
+        <TimelineContent>
+          Japan
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineSeparator>
+          <TimelineDot/>
+          
+        </TimelineSeparator>
+        <TimelineContent>
+          Dubai
+        </TimelineContent>
+      </TimelineItem>
+    </Timeline>
+   
+  </Box>
+
+  <Box width={'25%'}>
+    <Timeline position='alternate' >
+      <TimelineItem>
+        <TimelineSeparator>
+          <TimelineDot color='secondary' variant='filled'/>
+          <TimelineConnector/>
+        </TimelineSeparator>
+        <TimelineContent>
+          Manila
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineSeparator>
+          <TimelineDot/>
+          <TimelineConnector/>
+        </TimelineSeparator>
+        <TimelineContent>
+          Japan
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineSeparator>
+          <TimelineDot/>
+          
+        </TimelineSeparator>
+        <TimelineContent>
+          Dubai
+        </TimelineContent>
+      </TimelineItem>
+    </Timeline>
+   
+  </Box>
+
+  <Box width={'25%'}>
+    <Timeline position='left' >
+      <TimelineItem>
+      <TimelineOppositeContent>
+          6:00
+        </TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot color='warning'/>
+          <TimelineConnector/>
+        </TimelineSeparator>
+        <TimelineContent>
+          Manila
+        </TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+      <TimelineOppositeContent>
+          8:00
+        </TimelineOppositeContent>
+        <TimelineSeparator >
+          <TimelineDot color='warning'/>
+          <TimelineConnector/>
+        </TimelineSeparator >
+        <TimelineContent>
+          Japan
+        </TimelineContent>
+       
+      </TimelineItem>
+      <TimelineItem>
+      <TimelineOppositeContent>
+          10:00
+        </TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot color='warning'/>
+          
+        </TimelineSeparator>
+        <TimelineContent>
+          Dubai
+        </TimelineContent>
+      </TimelineItem>
+    </Timeline>
+   
+  </Box>
+
+
+</Stack >
+      
+
     
-
-
-  
-  
-
- 
-
-
-
-
-
-
-
-
-
-
 
 
 </Stack>
   
 
 
-
-
 </div>
-
-    
-    
+    </ThemeProvider>
   )
 }
 
