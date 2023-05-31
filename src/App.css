@@ -40,12 +40,76 @@ ul{
 }
 
 .blacken{
-    background-color: black;
+    background-color: rgb(41, 41, 41);
 }
 
 
 .svg-large{
     font-size: 30px;
+}
+
+.disablehover:hover , .disablehover *:hover{
+    background-color: transparent !important;
+}
+
+.drawerbutton1{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start!important;
+    gap: 12px;
+    padding: 8px 16px!important;
+  
+}
+
+.dimbackground{
+    background-color: rgb(243, 243, 243);
+}
+
+.drawerfooter{
+    position: absolute;
+    bottom : 0;
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.relative{
+    position: relative;
+    
+}
+
+.margintop18{
+    margin-top: 18px!important;
+}
+
+.dbpanelicon1{
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    top: -20px;
+    left: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dbpanelicon1 svg{
+    fill: white;
+    font-size: 40px;
+}
+
+.dbchart{
+    margin-top: -30px;
+    display: block;
+    width: 100%;
+    height: 160px;
+    margin-bottom: 12px;
+
+   
+
 }
 
 

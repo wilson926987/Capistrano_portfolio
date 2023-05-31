@@ -7,7 +7,6 @@ import { AppBar, Toolbar, Typography  , Stack , Button , Menu, MenuItem, MenuIte
 
 
 import Home from './pages/Home';
-import DashboardContainer from './pages/Dashboard/DashboardContainer';
 
 import HomepagesContainer from './pages/Homepages/HomepagesContainer';
 import ProfilepageContainer from './pages/Profilepage/ProfilepageContainer';
@@ -65,7 +64,7 @@ function App() {
         aria-haspopup = 'true'
         aria-expanded={dashboard}
         onClick={()=>{setDashboard(!dashboard)}}
-        disabled
+    
     > Dashboard</Button>
 
   
@@ -95,8 +94,8 @@ function App() {
    
      
       >
-      <MenuItem onClick={()=>{navigate('dashboard/dashboard1') ; setDashboard(false)}}>Dashboard 1</MenuItem>
-      <MenuItem onClick={()=>{navigate('dashboard/dashboard2') ; setDashboard(false)}}>Dashboard 2</MenuItem>
+      <MenuItem onClick={()=>{navigate('dashboard1') ; setDashboard(false)}}>Dashboard 1</MenuItem>
+      <MenuItem disabled onClick={()=>{navigate('dashboard/dashboard2') ; setDashboard(false)}}>Dashboard 2</MenuItem>
     </Menu>
 
    
@@ -117,21 +116,14 @@ function App() {
 </AppBar>
 
 
-
-
-
-   
    
 
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='components' element={<SampleComponents/>}></Route>
           <Route path='graphs' element={<Graphs/>}></Route>
-          <Route path='dashboard' element ={<DashboardContainer/>}>
-
-            <Route path='dashboard1' element={<Dashboard1/>}></Route>
-            <Route path='dashboard2' element={<Dashboard2/>}></Route>
-          </Route>
+          <Route path='dashboard1' element={<Dashboard1/>}></Route>
+        
      
           <Route path='profilepage' element= {<ProfilepageContainer/>}>
 

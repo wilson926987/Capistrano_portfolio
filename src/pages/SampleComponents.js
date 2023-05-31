@@ -545,7 +545,7 @@ function SampleComponents() {
     </Stack>
 
 
-<Drawer anchor='left' open={sidebar} onClose={()=>setSidebar(false)}>
+<Drawer   anchor='left' open={sidebar} onClose={()=>setSidebar(false)}>
 
   <Box  padding={2} width={'250px'} role='presentation'>
     <Typography variant='body1' component={'div'}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam ea tenetur perspiciatis officia doloribus facilis, voluptate dolores, commodi facere alias nesciunt voluptatibus nisi quam voluptas ratione repellendus accusantium atque. Deserunt.</Typography>
@@ -1051,6 +1051,7 @@ function SampleComponents() {
 
 </Stack >
       
+
 
     
 
