@@ -11,8 +11,7 @@ import Home from './pages/Home';
 import HomepagesContainer from './pages/Homepages/HomepagesContainer';
 import ProfilepageContainer from './pages/Profilepage/ProfilepageContainer';
 import SampleComponents from './pages/SampleComponents';
-import Dashboard1 from './pages/Dashboard/Dashboard1';
-import Dashboard2 from './pages/Dashboard/Dashboard2';
+
 import Graphs from './pages/Graphs';
 import Homepage1 from './pages/Homepages/Homepage1';
 import Homepage2 from './pages/Homepages/Homepage2';
@@ -94,7 +93,7 @@ function App() {
    
      
       >
-      <MenuItem onClick={()=>{navigate('dashboard1') ; setDashboard(false)}}>Dashboard 1</MenuItem>
+      <MenuItem onClick={()=>{window.open('https://dashboard-plain1.vercel.app' , '_blank');; setDashboard(false)}}>Dashboard 1</MenuItem>
       <MenuItem disabled onClick={()=>{navigate('dashboard/dashboard2') ; setDashboard(false)}}>Dashboard 2</MenuItem>
     </Menu>
 
@@ -122,7 +121,7 @@ function App() {
           <Route path='/' element={<Home/>} />
           <Route path='components' element={<SampleComponents/>}></Route>
           <Route path='graphs' element={<Graphs/>}></Route>
-          <Route path='dashboard1' element={<Dashboard1/>}></Route>
+
         
      
           <Route path='profilepage' element= {<ProfilepageContainer/>}>
